@@ -1,8 +1,12 @@
+import Navbar from "./components/NavBar";
+
 function App() {
   return (
-    <div className="bg-blue-500 text-white p-8">
-      <h1 className="text-3xl font-bold">Hello World</h1>
-    </div>
+    <>
+      <header>
+        <Navbar></Navbar>
+      </header>
+    </>
   );
 }
 
