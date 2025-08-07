@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X, Instagram, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,11 +14,11 @@ const Navbar = () => {
   };
 
   const navigationLinks = [
-    { name: "Street", href: "#street" },
-    { name: "Music", href: "#music" },
-    { name: "Events", href: "#events" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "Street", to: "/street" },
+    { name: "Music", to: "/music" },
+    { name: "Events", to: "/events" },
+    { name: "About", to: "/about" },
+    { name: "Contact", to: "/contact" },
   ];
 
   return (
@@ -26,20 +27,22 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo Section */}
           <div className="flex items-center space-x-2">
-            <span className="text-3xl text-gray-800">PAUL TAYLOR</span>
+            <Link to="/" className="text-3xl text-gray-800">
+              PAUL TAYLOR
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navigationLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.to}
                 className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gray-50 rounded-md"
                 onClick={closeMenu}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -87,14 +90,14 @@ const Navbar = () => {
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
               {/* Mobile Navigation Links */}
               {navigationLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.to}
                   className="text-gray-700 hover:text-gray-900 hover:bg-gray-50 block px-3 py-2 text-base font-medium rounded-md transition-colors duration-200"
                   onClick={closeMenu}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
 
               {/* Mobile Social Icons */}
