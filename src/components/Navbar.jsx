@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Menu, X, Instagram, Twitter } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -13,12 +14,20 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
+  //check if link is active for border-bottom styling
+  const isActiveLink = (path) => {
+    if (path === "/street" && location.pathname === "/") return true;
+    if (path !== "/" && location.pathname.startsWith(path)) return true;
+
+    return false;
+  };
+
   const navigationLinks = [
-    { name: "Street", to: "/street" },
-    { name: "Music", to: "/music" },
-    { name: "Events", to: "/events" },
-    { name: "About", to: "/about" },
-    { name: "Contact", to: "/contact" },
+    { name: "street", to: "/street" },
+    { name: "music", to: "/music" },
+    { name: "events", to: "/events" },
+    { name: "about", to: "/about" },
+    { name: "contact", to: "/contact" },
   ];
 
   return (
@@ -38,8 +47,8 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.to}
-                className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gray-50 rounded-md"
-                onClick={closeMenu}
+                className={`text-gray-700 py-2 font-medium
+                ${isActiveLink(link.to) ? "border-b-[2px]" : ""}`}
               >
                 {link.name}
               </Link>
@@ -52,19 +61,19 @@ const Navbar = () => {
               href="https://instagram.com"
               target="_blank"
               rel="noopener"
-              className="text-gray-600 hover:text-gray-900 transition-colors duration-200"
+              className="text-gray-600"
               aria-label="Instagram"
             >
-              <Instagram className="h-5 w-5" />
+              <Instagram className="h-6 w-6" />
             </a>
             <a
               href="https://twitter.com"
               target="_blank"
               rel="noopener"
-              className="text-gray-600 hover:text-gray-900 transition-colors duration-200"
+              className="text-gray-600"
               aria-label="Twitter"
             >
-              <Twitter className="h-5 w-5" />
+              <Twitter className="h-6 w-6" />
             </a>
           </div>
 
@@ -72,7 +81,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="text-gray-700 hover:text-gray-900 focus:outline-none p-2 rounded-md"
+              className="text-gray-700 p-2"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
@@ -93,7 +102,7 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.to}
-                  className="text-gray-700 hover:text-gray-900 hover:bg-gray-50 block px-3 py-2 text-base font-medium rounded-md transition-colors duration-200"
+                  className="text-gray-700 block px-3 py-2 text-base font-medium"
                   onClick={closeMenu}
                 >
                   {link.name}
@@ -106,7 +115,7 @@ const Navbar = () => {
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener"
-                  className="text-gray-600 hover:text-gray-900 transition-colors duration-200"
+                  className="text-gray-600"
                   aria-label="Instagram"
                   onClick={closeMenu}
                 >
@@ -116,7 +125,7 @@ const Navbar = () => {
                   href="https://twitter.com"
                   target="_blank"
                   rel="noopener"
-                  className="text-gray-600 hover:text-gray-900 transition-colors duration-200"
+                  className="text-gray-600"
                   aria-label="Twitter"
                   onClick={closeMenu}
                 >
