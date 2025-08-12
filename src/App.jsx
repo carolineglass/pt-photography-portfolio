@@ -5,6 +5,7 @@ import Music from "./pages/Music";
 import Events from "./pages/Events";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <header>
         <Navbar />
       </header>
-      <main>
+      <main className="section-container">
         <Routes>
           <Route path="/" element={<Street />} />
           <Route path="/street" element={<Street />} />
@@ -22,6 +23,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
+      <Footer />
     </Router>
   );
 }

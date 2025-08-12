@@ -31,8 +31,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <nav aria-label="Header Navigation">
+      <div className="section-container">
         <div className="flex justify-between items-center h-16">
           {/* Logo Section */}
           <div className="flex items-center space-x-2">
