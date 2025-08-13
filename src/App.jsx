@@ -13,7 +13,7 @@ function App() {
       <header>
         <Navbar />
       </header>
-      <main className="section-container">
+      <main className="max-w-7xl mx-auto p-8 min-h-[calc(100vh-300px)] md:min-h-[calc(100vh-212px)]">
         <Routes>
           <Route path="/" element={<Street />} />
           <Route path="/street" element={<Street />} />
