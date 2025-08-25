@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Menu, X, Instagram, Twitter } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useCategories } from "../hooks/usePhotos";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { categories, loading: categoriesLoading } = useCategories();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -14,21 +16,30 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
+  //get first category slug for default link
+  const firstCategory =
+    categories.length > 0 ? `/${categories[0].slug.current}` : null;
+
   //check if link is active for border-bottom styling
   const isActiveLink = (path) => {
-    if (path === "/street" && location.pathname === "/") return true;
+    if (firstCategory && path === firstCategory && location.pathname === "/")
+      return true;
     if (path !== "/" && location.pathname.startsWith(path)) return true;
 
     return false;
   };
 
-  const navigationLinks = [
-    { name: "street", to: "/street" },
-    { name: "music", to: "/music" },
-    { name: "events", to: "/events" },
-    { name: "about", to: "/about" },
-    { name: "contact", to: "/contact" },
-  ];
+  //create navigation links array from categories with about and contact links
+  const navigationLinks = !categoriesLoading
+    ? [
+        ...categories.map((cat) => ({
+          name: cat.title,
+          to: `/${cat.slug.current}`,
+        })),
+        { name: "about", to: "/about" },
+        { name: "contact", to: "/contact" },
+      ]
+    : [];
 
   return (
     <nav aria-label="Header Navigation">
