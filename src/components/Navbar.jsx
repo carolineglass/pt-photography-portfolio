@@ -47,7 +47,17 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo Section */}
           <div className="flex items-center space-x-2">
-            <Link to="/" className="text-3xl text-gray-800">
+            <Link
+              to="/"
+              onClick={() => {
+                const isMobile =
+                  !window.matchMedia("(min-width: 768px)").matches;
+                if (isMobile && isMenuOpen) {
+                  closeMenu();
+                }
+              }}
+              className="text-3xl text-gray-800"
+            >
               PAUL TAYLOR
             </Link>
           </div>
