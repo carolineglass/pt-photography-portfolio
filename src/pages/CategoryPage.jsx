@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { usePhotos, useCategories } from "../hooks/usePhotos";
-import { urlFor } from "../lib/sanity";
+import FadeInImage from "../components/FadeInImage";
 
 const CategoryPage = () => {
   const { categorySlug } = useParams();
@@ -12,6 +12,15 @@ const CategoryPage = () => {
   } = usePhotos(categorySlug);
   const { categories, loading: categoriesLoading } = useCategories();
   const [selectedImage, setSelectedImage] = useState(null);
+
+  useEffect(() => {
+    // Reset selected image when category changes
+    setSelectedImage(null);
+  }, [actualCategorySlug]);
+
+  useEffect(() => {
+    console.log(selectedImage);
+  }, [selectedImage]);
 
   if (photosLoading || categoriesLoading) {
     return (
@@ -37,18 +46,15 @@ const CategoryPage = () => {
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {photos.map((photo) => (
-          <div
+        {photos.map((photo, index) => (
+          <FadeInImage
             key={photo._id}
-            className="cursor-zoom-in"
-            onClick={() => setSelectedImage(photo)}
-          >
-            <img
-              src={urlFor(photo.image).width(400).height(300).url()}
-              alt={photo.altText}
-            />
-            <p>{photo.title}</p>
-          </div>
+            photo={photo}
+            onClick={setSelectedImage}
+            style={{
+              animationDelay: `${index * 200}ms`, // Staggered animation
+            }}
+          />
         ))}
       </div>
     </div>
