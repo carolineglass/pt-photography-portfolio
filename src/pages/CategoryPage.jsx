@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { usePhotos, useCategories } from "../hooks/usePhotos";
 import FadeInImage from "../components/FadeInImage";
+import Lightbox from "../components/Lightbox";
 
 const CategoryPage = () => {
   const { categorySlug } = useParams();
@@ -57,6 +58,11 @@ const CategoryPage = () => {
           />
         ))}
       </div>
+      <Lightbox
+        photos={photos}
+        selectedPhoto={selectedImage}
+        onClose={() => setSelectedImage(null)}
+      />
     </div>
   );
 };
