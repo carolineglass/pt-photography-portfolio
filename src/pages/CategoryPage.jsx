@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { usePhotos, useCategories } from "../hooks/usePhotos";
 import FadeInImage from "../components/FadeInImage";
 import Lightbox from "../components/Lightbox";
+import Masonry from "react-masonry-css";
 
 const CategoryPage = () => {
   const { categorySlug } = useParams();
@@ -13,6 +14,13 @@ const CategoryPage = () => {
   } = usePhotos(categorySlug);
   const { categories, loading: categoriesLoading } = useCategories();
   const [selectedImage, setSelectedImage] = useState(null);
+
+  const breakpointColumns = {
+    default: 3,
+    1100: 3,
+    700: 2,
+    500: 1,
+  };
 
   useEffect(() => {
     // Reset selected image when category changes
@@ -46,18 +54,23 @@ const CategoryPage = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <Masonry
+        breakpointCols={breakpointColumns}
+        className="flex -ml-4 w-auto"
+        columnClassName="pl-3 bg-clip-padding"
+      >
         {photos.map((photo, index) => (
-          <FadeInImage
-            key={photo._id}
-            photo={photo}
-            onClick={setSelectedImage}
-            style={{
-              animationDelay: `${index * 200}ms`, // Staggered animation
-            }}
-          />
+          <div key={photo._id} className="mb-4">
+            <FadeInImage
+              photo={photo}
+              onClick={setSelectedImage}
+              style={{
+                animationDelay: `${index * 200}ms`, // Staggered animation
+              }}
+            />
+          </div>
         ))}
-      </div>
+      </Masonry>
       <Lightbox
         photos={photos}
         selectedPhoto={selectedImage}

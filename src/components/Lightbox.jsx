@@ -79,15 +79,11 @@ const Lightbox = ({ photos, selectedPhoto, onClose }) => {
       )}
 
       {/* Main Image */}
-      <div className="relative max-w-5xl max-h-full">
+      <div className="relative flex items-center justify-center w-full h-full max-w-[90vw] max-h-[90vh]">
         <img
-          src={urlFor(currentPhoto.image)
-            .width(1600)
-            .height(1200)
-            .fit("max")
-            .url()}
+          src={urlFor(currentPhoto.image).width(1600).url()}
           alt={currentPhoto.altText}
-          className="max-w-full max-h-full object-contain shadow-2xl"
+          className="max-w-full max-h-full w-auto h-auto object-contain shadow-2xl"
         />
       </div>
     </div>

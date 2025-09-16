@@ -47,9 +47,9 @@ const FadeInImage = ({ photo, onClick, className = "" }) => {
       {/* image shows once visible from IntersectionObserver */}
       {isVisible && (
         <img
-          src={urlFor(photo.image).width(400).height(300).url()}
+          src={urlFor(photo.image).width(600).url()}
           alt={photo.altText}
-          className={`w-full h-64 object-cover ${
+          className={`w-full h-auto object-cover ${
             isLoaded ? "opacity-100" : "opacity-0"
           }`}
           onLoad={handleImageLoad}
