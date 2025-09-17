@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import { Instagram, Twitter } from "lucide-react";
+import { RiTwitterXLine } from "react-icons/ri";
+import { FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   const location = useLocation();
@@ -31,22 +32,22 @@ const Footer = () => {
           {/* Social Icons */}
           <div className="flex items-center justify-center space-x-6">
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/thisispaultaylor"
               target="_blank"
               rel="noopener"
               className="text-gray-400 hover:text-white transition-colors duration-200"
               aria-label="Instagram"
             >
-              <Instagram className="h-5 w-5" />
+              <FaInstagram className="h-5 w-5" />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://x.com/paultaylor__"
               target="_blank"
               rel="noopener"
               className="text-gray-400 hover:text-white transition-colors duration-200"
-              aria-label="Twitter"
+              aria-label="X (formerly Twitter)"
             >
-              <Twitter className="h-5 w-5" />
+              <RiTwitterXLine className="h-5 w-5" />
             </a>
           </div>
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { MdChevronLeft, MdChevronRight, MdClose } from "react-icons/md";
 import { urlFor } from "../lib/sanity";
 
 const Lightbox = ({ photos, selectedPhoto, onClose }) => {
@@ -55,7 +55,7 @@ const Lightbox = ({ photos, selectedPhoto, onClose }) => {
         onClick={onClose}
         className="absolute top-6 right-6 text-gray-700 hover:text-gray-900 z-10 p-2 cursor-pointer"
       >
-        <X className="h-8 w-8" />
+        <MdClose className="h-8 w-8" />
       </button>
 
       {/* Previous Button */}
@@ -64,7 +64,7 @@ const Lightbox = ({ photos, selectedPhoto, onClose }) => {
           onClick={goToPrevious}
           className="absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-700 hover:text-gray-900 z-10 p-2 cursor-pointer"
         >
-          <ChevronLeft className="h-12 w-12" />
+          <MdChevronLeft className="h-12 w-12" />
         </button>
       )}
 
@@ -74,7 +74,7 @@ const Lightbox = ({ photos, selectedPhoto, onClose }) => {
           onClick={goToNext}
           className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-700 hover:text-gray-900 z-10 p-2 cursor-pointer"
         >
-          <ChevronRight className="h-12 w-12" />
+          <MdChevronRight className="h-12 w-12" />
         </button>
       )}
 

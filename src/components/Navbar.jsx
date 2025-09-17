@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Menu, X, Instagram, Twitter } from "lucide-react";
+import { RiMenuLine, RiCloseLine, RiTwitterXLine } from "react-icons/ri";
+import { FaInstagram } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import { useCategories } from "../hooks/usePhotos";
 
@@ -56,7 +57,7 @@ const Navbar = () => {
                   closeMenu();
                 }
               }}
-              className="text-3xl text-gray-800"
+              className="text-3xl text-gray-800 font-didot"
             >
               PAUL TAYLOR
             </Link>
@@ -68,7 +69,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.to}
-                className={`text-gray-700 py-2 font-medium
+                className={`text-gray-700 py-2 font-medium font-didot
                 ${isActiveLink(link.to) ? "border-b-[2px]" : ""}`}
               >
                 {link.name}
@@ -79,22 +80,22 @@ const Navbar = () => {
           {/* Desktop Social Icons*/}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/thisispaultaylor"
               target="_blank"
               rel="noopener"
               className="text-gray-600"
               aria-label="Instagram"
             >
-              <Instagram className="h-6 w-6" />
+              <FaInstagram className="h-6 w-6" />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://x.com/paultaylor__"
               target="_blank"
               rel="noopener"
               className="text-gray-600"
-              aria-label="Twitter"
+              aria-label="X (formerly Twitter)"
             >
-              <Twitter className="h-6 w-6" />
+              <RiTwitterXLine className="h-6 w-6" />
             </a>
           </div>
 
@@ -106,9 +107,9 @@ const Navbar = () => {
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
-                <X className="h-6 w-6" />
+                <RiCloseLine className="h-6 w-6" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <RiMenuLine className="h-6 w-6" />
               )}
             </button>
           </div>
@@ -133,24 +134,24 @@ const Navbar = () => {
               {/* Mobile Social Icons */}
               <div className="flex items-center justify-center space-x-6 pt-4 pb-2">
                 <a
-                  href="https://instagram.com"
+                  href="https://instagram.com/thisispaultaylor"
                   target="_blank"
                   rel="noopener"
                   className="text-gray-600"
                   aria-label="Instagram"
                   onClick={closeMenu}
                 >
-                  <Instagram className="h-6 w-6" />
+                  <FaInstagram className="h-6 w-6" />
                 </a>
                 <a
-                  href="https://twitter.com"
+                  href="https://x.com/paultaylor__"
                   target="_blank"
                   rel="noopener"
                   className="text-gray-600"
-                  aria-label="Twitter"
+                  aria-label="X (formerly Twitter)"
                   onClick={closeMenu}
                 >
-                  <Twitter className="h-6 w-6" />
+                  <RiTwitterXLine className="h-6 w-6" />
                 </a>
               </div>
             </div>

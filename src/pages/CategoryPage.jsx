@@ -31,10 +31,13 @@ const CategoryPage = () => {
     console.log(selectedImage);
   }, [selectedImage]);
 
+  // loading spinner while data is being fetched
   if (photosLoading || categoriesLoading) {
     return (
       <div>
-        <div className="text-center">Loading photos...</div>
+        <div className="flex items-center justify-center min-h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+        </div>
       </div>
     );
   }
@@ -44,10 +47,13 @@ const CategoryPage = () => {
     (cat) => cat.slug.current === actualCategorySlug
   );
 
+  // Show error message only after loading is complete
   if (!currentCategory) {
     return (
       <div>
-        <div className="text-center">Page not found</div>
+        <div className="text-center">
+          <p className="text-gray-600">Page not found</p>
+        </div>
       </div>
     );
   }

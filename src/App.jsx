@@ -11,7 +11,7 @@ function App() {
       <header>
         <Navbar />
       </header>
-      <main className="max-w-7xl mx-auto p-8 min-h-[calc(100vh-300px)] md:min-h-[calc(100vh-212px)]">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[calc(100vh-300px)] md:min-h-[calc(100vh-212px)]">
         <Routes>
           <Route path="/" element={<CategoryPage />} />
           <Route path="/:categorySlug" element={<CategoryPage />} />
