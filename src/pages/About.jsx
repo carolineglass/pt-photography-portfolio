@@ -25,7 +25,7 @@ const About = () => {
   }
 
   return (
-    <div>
+    <div className="max-w-7xl mx-auto">
       {/* About content */}
       <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
         <div className="order-2 md:order-1">

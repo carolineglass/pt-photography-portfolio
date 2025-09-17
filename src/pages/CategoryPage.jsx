@@ -16,7 +16,7 @@ const CategoryPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const breakpointColumns = {
-    default: 3,
+    default: 4,
     1100: 3,
     700: 2,
     500: 1,
@@ -26,10 +26,6 @@ const CategoryPage = () => {
     // Reset selected image when category changes
     setSelectedImage(null);
   }, [actualCategorySlug]);
-
-  useEffect(() => {
-    console.log(selectedImage);
-  }, [selectedImage]);
 
   // loading spinner while data is being fetched
   if (photosLoading || categoriesLoading) {

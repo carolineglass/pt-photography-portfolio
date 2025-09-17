@@ -44,10 +44,10 @@ const Navbar = () => {
 
   return (
     <nav aria-label="Header Navigation">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex justify-between items-center h-16">
+      <div className="flex flex-wrap px-4 sm:px-6 lg:px-12 py-8">
+        <div className="flex items-center h-16 grow shrink-0 basis-[67%]">
           {/* Logo Section */}
-          <div className="flex items-center space-x-2">
+          <div className="flex grow shrink md:basis-[33%] items-center space-x-2">
             <Link
               to="/"
               onClick={() => {
@@ -57,19 +57,19 @@ const Navbar = () => {
                   closeMenu();
                 }
               }}
-              className="text-3xl text-gray-800 font-didot"
+              className="lg:text-4xl text-2xl text-gray-800 font-didot"
             >
               PAUL TAYLOR
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex lg:text-base text-sm items-center space-x-6 grow shrink basis-[34%] justify-center">
             {navigationLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.to}
-                className={`text-gray-700 py-2 font-medium font-didot
+                className={`text-gray-700 py-1 font-medium font-didot
                 ${isActiveLink(link.to) ? "border-b-[2px]" : ""}`}
               >
                 {link.name}
@@ -77,30 +77,8 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Desktop Social Icons*/}
-          <div className="hidden md:flex items-center space-x-4">
-            <a
-              href="https://instagram.com/thisispaultaylor"
-              target="_blank"
-              rel="noopener"
-              className="text-gray-600"
-              aria-label="Instagram"
-            >
-              <FaInstagram className="h-6 w-6" />
-            </a>
-            <a
-              href="https://x.com/paultaylor__"
-              target="_blank"
-              rel="noopener"
-              className="text-gray-600"
-              aria-label="X (formerly Twitter)"
-            >
-              <RiTwitterXLine className="h-6 w-6" />
-            </a>
-          </div>
-
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden justify-end">
             <button
               onClick={toggleMenu}
               className="text-gray-700 p-2"
@@ -114,11 +92,10 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-
         {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+          <div className="md:hidden flex basis-full justify-center">
+            <div className="w-full text-center px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
               {/* Mobile Navigation Links */}
               {navigationLinks.map((link) => (
                 <Link
@@ -157,6 +134,28 @@ const Navbar = () => {
             </div>
           </div>
         )}
+
+        {/* Desktop Social Icons*/}
+        <div className="hidden md:flex items-center space-x-4 grow shrink-0 basis-[33%] justify-end">
+          <a
+            href="https://instagram.com/thisispaultaylor"
+            target="_blank"
+            rel="noopener"
+            className="text-gray-600"
+            aria-label="Instagram"
+          >
+            <FaInstagram className="h-6 w-6" />
+          </a>
+          <a
+            href="https://x.com/paultaylor__"
+            target="_blank"
+            rel="noopener"
+            className="text-gray-600"
+            aria-label="X (formerly Twitter)"
+          >
+            <RiTwitterXLine className="h-6 w-6" />
+          </a>
+        </div>
       </div>
     </nav>
   );
