@@ -134,7 +134,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={state.submitting}
-              className="bg-gray-900 text-white text-md md:text-lg py-4 px-6 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="border-2 border-black text-md cursor-pointer py-3 px-5 hover:bg-black hover:text-white focus:outline-none focus:ring-1 focus:ring-gray-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {state.submitting ? "Sending..." : "Send"}
             </button>

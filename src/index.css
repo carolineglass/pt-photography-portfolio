@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "Adobe Garamond Pro", serif;
+  --font-didot: "Linotype Didot", serif;
+}
+
 @font-face {
   font-family: "Linotype Didot";
   src: url("fonts/DidotLTStd-Roman.woff2") format("woff2");
@@ -8,12 +13,16 @@
   font-display: swap;
 }
 
-@layer components {
-  .form-inputs {
-    @apply w-full p-3 md:p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500;
-  }
+@font-face {
+  font-family: "Adobe Garamond Pro";
+  src: url("fonts/AGaramondPro-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme {
-  --font-didot: "Linotype Didot", serif;
+@layer components {
+  .form-inputs {
+    @apply w-full p-3 border bg-gray-50 border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:border-gray-500;
+  }
 }

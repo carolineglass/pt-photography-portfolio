@@ -47,7 +47,7 @@ const Navbar = () => {
       <div className="flex flex-wrap px-4 sm:px-6 lg:px-12 py-8">
         <div className="flex items-center h-16 grow shrink-0 basis-[67%]">
           {/* Logo Section */}
-          <div className="flex grow shrink md:basis-[33%] items-center space-x-2">
+          <div className="flex grow shrink md:basis-[33%] items-center">
             <Link
               to="/"
               onClick={() => {
@@ -57,19 +57,19 @@ const Navbar = () => {
                   closeMenu();
                 }
               }}
-              className="lg:text-4xl text-2xl text-gray-800 font-didot"
+              className="lg:text-3xl text-2xl text-gray-800 font-didot"
             >
               PAUL TAYLOR
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex lg:text-base text-sm items-center space-x-6 grow shrink basis-[34%] justify-center">
+          <div className="hidden md:flex lg:text-base text-sm items-center grow shrink basis-[34%] justify-center">
             {navigationLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.to}
-                className={`text-gray-700 py-1 font-medium font-didot
+                className={`text-gray-700 py-1 font-medium flex mx-[0.5vw]
                 ${isActiveLink(link.to) ? "border-b-[2px]" : ""}`}
               >
                 {link.name}
