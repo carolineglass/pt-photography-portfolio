@@ -1,19 +1,14 @@
 import { useAbout } from "../hooks/useAbout";
 import { urlFor } from "../lib/sanity";
 import { PortableText } from "@portabletext/react";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const About = () => {
   const { aboutData, loading } = useAbout();
 
   // loading spinner while data is being fetched
   if (loading) {
-    return (
-      <div>
-        <div className="flex items-center justify-center min-h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
-        </div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   if (!aboutData) {

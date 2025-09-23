@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { usePhotos, useCategories } from "../hooks/usePhotos";
 import FadeInImage from "../components/FadeInImage";
 import Lightbox from "../components/Lightbox";
+import LoadingSpinner from "../components/LoadingSpinner";
 import Masonry from "react-masonry-css";
 
 const CategoryPage = () => {
@@ -14,6 +15,7 @@ const CategoryPage = () => {
   } = usePhotos(categorySlug);
   const { categories, loading: categoriesLoading } = useCategories();
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
   const breakpointColumns = {
     default: 4,
@@ -23,19 +25,24 @@ const CategoryPage = () => {
   };
 
   useEffect(() => {
-    // Reset selected image when category changes
-    setSelectedImage(null);
+    // Reset selected image and index when category changes
+    handleClose();
   }, [actualCategorySlug]);
+
+  // Reset selected image and index when lightbox close is triggered
+  const handleClose = () => {
+    setSelectedImage(null);
+    setSelectedImageIndex(null);
+  };
+
+  const handleImageClick = (photo, index) => {
+    setSelectedImage(photo);
+    setSelectedImageIndex(index);
+  };
 
   // loading spinner while data is being fetched
   if (photosLoading || categoriesLoading) {
-    return (
-      <div>
-        <div className="flex items-center justify-center min-h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
-        </div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   //find current category based on actualCategorySlug from usePhotos to handle default category
@@ -65,7 +72,7 @@ const CategoryPage = () => {
           <div key={photo._id} className="mb-4">
             <FadeInImage
               photo={photo}
-              onClick={setSelectedImage}
+              onClick={() => handleImageClick(photo, index)}
               style={{
                 animationDelay: `${index * 200}ms`, // Staggered animation
               }}
@@ -73,11 +80,13 @@ const CategoryPage = () => {
           </div>
         ))}
       </Masonry>
-      <Lightbox
-        photos={photos}
-        selectedPhoto={selectedImage}
-        onClose={() => setSelectedImage(null)}
-      />
+      {selectedImage && selectedImageIndex != null && (
+        <Lightbox
+          photos={photos}
+          selectedImageIndex={selectedImageIndex}
+          onClose={handleClose}
+        />
+      )}
     </div>
   );
 };

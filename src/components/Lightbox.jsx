@@ -1,19 +1,16 @@
 import { useState, useEffect } from "react";
 import { MdChevronLeft, MdChevronRight, MdClose } from "react-icons/md";
 import { urlFor } from "../lib/sanity";
+import LoadingSpinner from "./LoadingSpinner";
 
-const Lightbox = ({ photos, selectedPhoto, onClose }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const Lightbox = ({ photos, selectedImageIndex, onClose }) => {
+  const [currentIndex, setCurrentIndex] = useState(null);
 
-  // Find index of selected photo when lightbox opens
   useEffect(() => {
-    if (selectedPhoto) {
-      const index = photos.findIndex(
-        (photo) => photo._id === selectedPhoto._id
-      );
-      setCurrentIndex(index !== -1 ? index : 0);
+    if (selectedImageIndex != null) {
+      setCurrentIndex(selectedImageIndex);
     }
-  }, [selectedPhoto, photos]);
+  }, [selectedImageIndex]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -26,9 +23,8 @@ const Lightbox = ({ photos, selectedPhoto, onClose }) => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [currentIndex]);
 
-  if (!selectedPhoto) return null;
-
-  const currentPhoto = photos[currentIndex];
+  const currentPhoto =
+    photos && currentIndex != null ? photos[currentIndex] : null;
 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev + 1) % photos.length);
@@ -79,13 +75,17 @@ const Lightbox = ({ photos, selectedPhoto, onClose }) => {
       )}
 
       {/* Main Image */}
-      <div className="relative flex items-center justify-center w-full h-full max-w-[90vw] max-h-[90vh]">
-        <img
-          src={urlFor(currentPhoto.image).width(1600).url()}
-          alt={currentPhoto.altText}
-          className="max-w-full max-h-full w-auto h-auto object-contain shadow-2xl"
-        />
-      </div>
+      {!currentPhoto ? (
+        <LoadingSpinner />
+      ) : (
+        <div className="relative flex items-center justify-center w-full h-full max-w-[90vw] max-h-[90vh]">
+          <img
+            src={urlFor(currentPhoto.image).width(1600).url()}
+            alt={currentPhoto.altText}
+            className="max-w-full max-h-full w-auto h-auto object-contain shadow-2xl"
+          />
+        </div>
+      )}
     </div>
   );
 };
