@@ -21,6 +21,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Adobe Garamond Pro";
+  src: url("fonts/AGaramondPro-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer components {
   .form-inputs {
     @apply w-full p-3 border bg-gray-50 border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:border-gray-500;

@@ -69,8 +69,8 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.to}
-                className={`text-gray-700 py-1 font-medium flex mx-[0.5vw]
-                ${isActiveLink(link.to) ? "border-b-[2px]" : ""}`}
+                className={`text-gray-700 py-1 font-medium flex mx-[0.5vw] border-b-[2px]
+                ${isActiveLink(link.to) ? "" : "border-transparent"}`}
               >
                 {link.name}
               </Link>
@@ -95,13 +95,15 @@ const Navbar = () => {
         {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
           <div className="md:hidden flex basis-full justify-center">
-            <div className="w-full text-center px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+            <div className="flex flex-col text-center px-2 pt-2 pb-3 space-y-1">
               {/* Mobile Navigation Links */}
               {navigationLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.to}
-                  className="text-gray-700 block px-3 py-2 text-base font-medium"
+                  className={`text-gray-700 px-3 py-2 text-base font-medium ${
+                    isActiveLink(link.to) ? "border-b-[2px]" : ""
+                  }`}
                   onClick={closeMenu}
                 >
                   {link.name}
