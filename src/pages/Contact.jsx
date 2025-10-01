@@ -135,15 +135,15 @@ const Contact = () => {
               className="text-red-600 text-md mt-1"
             />
           </div>
-          <div
-            className="g-recaptcha"
-            data-sitekey="6LdubNsrAAAAAPngiHORC9wmcs3JC4oUIH0HO8Sv"
-          ></div>
-          <div className="flex justify-start">
+          <div className="flex flex-col">
+            <div
+              className="g-recaptcha"
+              data-sitekey="6LdubNsrAAAAAPngiHORC9wmcs3JC4oUIH0HO8Sv"
+            ></div>
             <button
               type="submit"
               disabled={state.submitting}
-              className="border-2 border-black text-md cursor-pointer py-3 px-5 hover:bg-black hover:text-white focus:outline-none focus:ring-1 focus:ring-gray-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-fit border-2 border-black text-md cursor-pointer py-3 px-5 mt-3 hover:bg-black hover:text-white focus:outline-none focus:ring-1 focus:ring-gray-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {state.submitting ? "Sending..." : "Send"}
             </button>
