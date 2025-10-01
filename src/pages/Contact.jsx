@@ -135,6 +135,10 @@ const Contact = () => {
               className="text-red-600 text-md mt-1"
             />
           </div>
+          <div
+            className="g-recaptcha"
+            data-sitekey="6LdubNsrAAAAAPngiHORC9wmcs3JC4oUIH0HO8Sv"
+          ></div>
           <div className="flex justify-start">
             <button
               type="submit"
