@@ -21,7 +21,12 @@ const Contact = () => {
   return (
     <div className="max-w-2xl mx-auto">
       <div>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6"
+          method="POST"
+          action="https://formspree.io/f/mvgqypjj"
+        >
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label
