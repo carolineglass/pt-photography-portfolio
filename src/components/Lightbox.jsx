@@ -78,7 +78,7 @@ const Lightbox = ({ photos, selectedImageIndex, onClose }) => {
       {!currentPhoto ? (
         <LoadingSpinner />
       ) : (
-        <div className="relative flex items-center justify-center w-full h-full max-w-[90vw] max-h-[90vh]">
+        <div className="relative flex items-center justify-center w-full h-full max-w-[70vw] max-h-[70vh]">
           <img
             src={urlFor(currentPhoto.image).width(1600).url()}
             alt={currentPhoto.altText}
