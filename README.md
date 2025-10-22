@@ -2,7 +2,7 @@
 
 A modern, full-stack photography portfolio website built with React, Vite, and Sanity CMS. Features dynamic content management, responsive masonry galleries, and an elegant lightbox slideshow.
 
-🔗 **Live Site:** [thisispaultaylor.com](https://thisispaultaylor.com)
+🔗 **Live Site:** [thisispaultaylor.com](www.thisispaultaylor.com)
 
 ## ✨ Features
 
