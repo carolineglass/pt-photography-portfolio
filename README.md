@@ -26,6 +26,9 @@ A modern, full-stack photography portfolio website built with React, Vite, and S
 - Sanity.io (Headless CMS)
 - [Sanity Studio Repository](https://github.com/carolineglass/pt-photography-portfolio-cms)
 
+**Services:**
+- Formspree (Contact form)
+
 **Deployment:**
 - Vercel (Frontend)
 - Sanity Cloud (CMS)
